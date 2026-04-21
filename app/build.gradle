@@ -50,8 +50,7 @@ dependencies {
     implementation "androidx.camera:camera-lifecycle:$camerax_version"
     implementation "androidx.camera:camera-view:$camerax_version"
 
-    // 【修复】替换为稳定可下载的 OpenCV 依赖
-    implementation 'org.opencv:opencv-android:4.5.10'
+
 
     // PDF生成库
     implementation 'com.itextpdf:itext7-core:7.2.5'
