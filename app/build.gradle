@@ -49,8 +49,8 @@ dependencies {
     implementation "androidx.camera:camera-lifecycle:$camerax_version"
     implementation "androidx.camera:camera-view:$camerax_version"
 
-    // 安卓专用OpenCV依赖
-    implementation 'com.quickbirdstudios:opencv:4.9.0'
+    // 安卓专用 OpenCV 依赖（4.5.10 版本，稳定可下载）
+    implementation 'org.opencv:opencv-android:4.5.10'
 
     // PDF生成库
     implementation 'com.itextpdf:itext7-core:7.2.5'
