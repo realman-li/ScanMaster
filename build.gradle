@@ -2,10 +2,8 @@ plugins {
     id 'com.android.application' version '8.2.0' apply false
 }
 
-allprojects {
-    repositories {
-        google()
-        mavenCentral()
-        maven { url "https://jitpack.io" }
-    }
+plugins {
+    id 'com.android.application' version '8.2.0' apply false
 }
+
+// 删掉之前的 allprojects 仓库配置，这里只保留插件声明即可
