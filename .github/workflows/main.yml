@@ -1,20 +1,18 @@
 name: 扫描APP在线打包APK
 on:
-  # 推送到main分支自动打包
   push:
     branches: [ main ]
-  # 支持手动点击触发打包
   workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      # 拉取项目代码
+      # 1. 拉取代码
       - name: 拉取代码
         uses: actions/checkout@v4
 
-      # 配置JDK17（安卓编译必需，固定版本）
+      # 2. 配置JDK17（安卓编译必需）
       - name: 配置JDK 17
         uses: actions/setup-java@v4
         with:
@@ -22,15 +20,18 @@ jobs:
           distribution: 'temurin'
           cache: gradle
 
-      # 给gradlew执行权限（Linux环境必需）
-      - name: 赋予gradlew执行权限
-        run: chmod +x gradlew
+      # 3. 配置Gradle环境（自动安装gradle，无需本地文件）
+      - name: 配置Gradle
+        uses: gradle/actions/setup-gradle@v5
+        with:
+          gradle-version: "8.2"
+          cache: true
 
-      # 编译打包Debug APK（用项目匹配的gradle版本，输出详细日志方便排查）
+      # 4. 编译APK（直接用gradle命令，不依赖gradlew）
       - name: 编译打包APK
-        run: ./gradlew assembleDebug --stacktrace
+        run: gradle assembleDebug --stacktrace
 
-      # 上传打包好的APK产物
+      # 5. 上传打包好的APK
       - name: 上传APK
         uses: actions/upload-artifact@v4
         with:
