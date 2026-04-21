@@ -1,4 +1,3 @@
-// 这里只统一管理插件版本，绝不写其他配置
 plugins {
     id 'com.android.application' version '8.2.0' apply false
 }
