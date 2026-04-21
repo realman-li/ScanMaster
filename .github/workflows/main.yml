@@ -24,8 +24,9 @@ jobs:
           gradle-version: "8.2"
           cache: true
 
+      # 修复：删除了错误的 --offline=false
       - name: 编译打包APK
-        run: gradle assembleDebug --stacktrace --offline=false
+        run: gradle assembleDebug --stacktrace
 
       - name: 上传APK
         uses: actions/upload-artifact@v4
